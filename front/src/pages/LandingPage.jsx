@@ -9,6 +9,7 @@ export const LandingPage = () => {
     const [commentsContent, setCommentsContent] = useState([]);
 
     const {VITE_API} = import.meta.env
+    const {VITE_CONNECTION_DB} = import.meta.env
 
     useEffect(() => {
         getData();
@@ -16,7 +17,7 @@ export const LandingPage = () => {
 
     const getData = async () => {
         try {
-            const response = await fetch(`${VITE_API}/API/v1/json-data`);
+            const response = await fetch(`${VITE_API}${VITE_CONNECTION_DB}`);
             if (!response.ok) {
                 throw new Error(`Error: ${response.status} ${response.statusText}`);
             }
